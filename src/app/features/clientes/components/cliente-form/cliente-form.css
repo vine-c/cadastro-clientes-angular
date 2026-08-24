@@ -1,0 +1,189 @@
+.form-container {
+  width: min(100%, 900px);
+  margin: 32px auto;
+  padding: 32px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  margin: 0 0 32px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+section {
+  margin-bottom: 32px;
+}
+
+h3 {
+  margin: 0 0 20px;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.form-row mat-form-field {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.cep-row {
+  align-items: center;
+}
+
+.cep-field {
+  flex: 0 0 220px !important;
+}
+
+.cep-row button {
+  height: 56px;
+  padding: 0 24px;
+}
+
+.numero-field {
+  flex: 0 0 180px !important;
+}
+
+.uf-field {
+  flex: 0 0 100px !important;
+}
+
+.cep-message {
+  margin: -4px 0 16px;
+
+  font-size: 14px;
+  color: #d32f2f;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  padding-top: 24px;
+  border-top: 1px solid #eeeeee;
+}
+
+.actions button {
+  min-width: 110px;
+  height: 44px;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .form-container {
+    margin: 20px;
+    padding: 24px;
+  }
+
+  .form-row {
+    flex-wrap: wrap;
+  }
+
+  .form-row mat-form-field {
+    min-width: calc(50% - 8px);
+  }
+
+  .full-width {
+    min-width: 100% !important;
+  }
+
+  .cep-field {
+    flex: 1 !important;
+  }
+
+  .numero-field {
+    flex: 1 !important;
+  }
+
+  .uf-field {
+    flex: 1 !important;
+  }
+
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .form-container {
+    width: 100%;
+    margin: 0;
+    padding: 20px 16px;
+
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+
+  section {
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 17px;
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-row mat-form-field {
+    width: 100%;
+    min-width: 100% !important;
+  }
+
+  .cep-row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .cep-row .cep-field {
+    min-width: 0 !important;
+    flex: 1 !important;
+  }
+
+  .cep-row button {
+    height: 56px;
+    padding: 0 16px;
+    white-space: nowrap;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+}

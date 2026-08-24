@@ -1,0 +1,152 @@
+<div class="lista-container">
+
+  <div class="lista-header">
+
+    <div>
+      <h2>Clientes cadastrados</h2>
+
+      @if (clientes.length > 0) {
+        <span class="contador">
+          {{ clientes.length }}
+          {{ clientes.length === 1 ? 'cliente cadastrado' : 'clientes cadastrados' }}
+        </span>
+      }
+
+    </div>
+
+  </div>
+
+
+  @if (clientes.length === 0) {
+
+    <div class="estado-vazio">
+
+      <div class="estado-icon">
+        👥
+      </div>
+
+      <h3>Nenhum cliente cadastrado</h3>
+
+      <p>
+        Os clientes cadastrados aparecerão aqui.
+      </p>
+
+    </div>
+
+  } @else {
+
+    <div class="clientes-lista">
+
+      @for (cliente of clientes; track cliente.id) {
+
+        <div class="cliente-card">
+
+          <div class="cliente-header">
+
+            <div class="cliente-avatar">
+              {{ cliente.nome.charAt(0).toUpperCase() }}
+            </div>
+
+            <div class="cliente-nome">
+
+              <h3>
+                {{ cliente.nome }}
+              </h3>
+
+              <span>
+                {{ cliente.email }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="cliente-info">
+
+            <div class="info-item">
+
+              <span class="info-label">
+                Telefone
+              </span>
+
+              <span class="info-value">
+                {{ cliente.telefone || 'Não informado' }}
+              </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <span class="info-label">
+                CPF
+              </span>
+
+              <span class="info-value">
+                {{ cliente.cpf }}
+              </span>
+
+            </div>
+
+
+            <div class="info-item endereco">
+
+              <span class="info-label">
+                Endereço
+              </span>
+
+              <span class="info-value">
+                {{ cliente.logradouro }}, {{ cliente.numero }}
+              </span>
+
+              <span class="info-secondary">
+                {{ cliente.bairro }} -
+                {{ cliente.cidade }}/{{ cliente.uf }}
+              </span>
+
+            </div>
+
+
+            <div class="info-item">
+
+              <span class="info-label">
+                CEP
+              </span>
+
+              <span class="info-value">
+                {{ cliente.cep }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="acoes">
+
+            <button
+              mat-button
+              type="button"
+              (click)="editar(cliente)">
+              Editar
+            </button>
+
+            <button
+              mat-button
+              type="button"
+              (click)="excluir(cliente)">
+              Excluir
+            </button>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>

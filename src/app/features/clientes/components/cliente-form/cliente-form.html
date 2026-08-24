@@ -1,0 +1,238 @@
+<form [formGroup]="clienteForm">
+
+  <div class="form-container">
+
+    <h2>{{ clienteEditando ? 'Editar Cliente' : 'Novo Cliente' }}</h2>
+
+    <!-- DADOS PESSOAIS -->
+    <section>
+      <h3>Dados pessoais</h3>
+
+      <!-- NOME -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome</mat-label>
+
+          <input
+            matInput
+            formControlName="nome">
+
+          @if (clienteForm.controls.nome.hasError('required')) {
+            <mat-error>
+              Nome é obrigatório.
+            </mat-error>
+          }
+
+        </mat-form-field>
+      </div>
+
+      <!-- EMAIL / TELEFONE / CPF -->
+      <div class="form-row">
+
+        <!-- EMAIL -->
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+
+          <input
+            matInput
+            type="email"
+            formControlName="email">
+
+          @if (clienteForm.controls.email.hasError('required')) {
+            <mat-error>
+              E-mail é obrigatório.
+            </mat-error>
+          }
+
+          @if (clienteForm.controls.email.hasError('email')) {
+            <mat-error>
+              Informe um e-mail válido.
+            </mat-error>
+          }
+
+        </mat-form-field>
+
+        <!-- TELEFONE -->
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+
+          <input
+          matInput
+          type="text"
+          inputmode="tel"
+          maxlength="15"
+          placeholder="(00) 00000-0000"
+          formControlName="telefone"
+          (input)="onTelefoneInput($event)">
+
+        </mat-form-field>
+
+        <!-- CPF -->
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+
+          <input
+          matInput
+          type="text"
+          inputmode="numeric"
+          maxlength="14"
+          placeholder="000.000.000-00"
+          formControlName="cpf"
+          (input)="onCpfInput($event)">
+
+          @if (clienteForm.controls.cpf.hasError('required')) {
+            <mat-error>
+              CPF é obrigatório.
+            </mat-error>
+          }
+
+        </mat-form-field>
+
+      </div>
+
+    </section>
+
+
+    <!-- ENDEREÇO -->
+    <section>
+
+      <h3>Endereço</h3>
+
+      <!-- CEP -->
+      <div class="form-row cep-row">
+
+  <mat-form-field appearance="outline" class="cep-field">
+    <mat-label>CEP</mat-label>
+
+    <input
+      matInput
+      type="text"
+      inputmode="numeric"
+      maxlength="9"
+      placeholder="00000-000"
+      (input)="onCepInput($event)"
+      formControlName="cep">
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    type="button"
+    (click)="buscarCep()"
+    [disabled]="buscandoCep">
+
+    {{ buscandoCep ? 'Buscando...' : 'Buscar CEP' }}
+
+  </button>
+
+</div>
+
+@if (mensagemCep) {
+  <div class="cep-message">
+    {{ mensagemCep }}
+  </div>
+}
+
+
+      <!-- LOGRADOURO / NÚMERO -->
+      <div class="form-row">
+
+        <!-- LOGRADOURO -->
+        <mat-form-field
+          appearance="outline"
+          class="full-width">
+
+          <mat-label>Logradouro</mat-label>
+
+          <input
+            matInput
+            formControlName="logradouro">
+
+        </mat-form-field>
+
+
+        <!-- NÚMERO -->
+        <mat-form-field
+          appearance="outline"
+          class="numero-field">
+
+          <mat-label>Número</mat-label>
+
+          <input
+            matInput
+            formControlName="numero">
+
+        </mat-form-field>
+
+      </div>
+
+
+      <!-- BAIRRO / CIDADE / UF -->
+      <div class="form-row">
+
+        <!-- BAIRRO -->
+        <mat-form-field appearance="outline">
+
+          <mat-label>Bairro</mat-label>
+
+          <input
+            matInput
+            formControlName="bairro">
+
+        </mat-form-field>
+
+
+        <!-- CIDADE -->
+        <mat-form-field appearance="outline">
+
+          <mat-label>Cidade</mat-label>
+
+          <input
+            matInput
+            formControlName="cidade">
+
+        </mat-form-field>
+
+
+        <!-- UF -->
+        <mat-form-field
+          appearance="outline"
+          class="uf-field">
+
+          <mat-label>UF</mat-label>
+
+          <input
+            matInput
+            maxlength="2"
+            formControlName="uf">
+
+        </mat-form-field>
+
+      </div>
+
+    </section>
+
+
+    <!-- AÇÕES -->
+    <div class="actions">
+
+      <button
+        mat-button
+        type="button">
+
+        Cancelar
+
+      </button>
+
+
+      <button
+        mat-flat-button
+        type="button"
+        (click)="salvar()">
+        {{ clienteEditando ? 'Atualizar' : 'Salvar' }}
+      </button>
+
+    </div>
+
+  </div>
+
+</form>
