@@ -1,59 +1,95 @@
-# CadastroClientes
+# Cadastro de Clientes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.21.
+Aplicação web para cadastro, consulta, edição e exclusão de clientes.
 
-## Development server
+O projeto foi desenvolvido utilizando Angular no frontend e uma API REST em ASP.NET Core no backend. A aplicação também possui integração com a API ViaCEP para preenchimento automático do endereço através do CEP.
 
-To start a local development server, run:
+## 🚀 Demonstração
 
-```bash
-ng serve
-```
+**Frontend:**  
+https://cadastro-clientes-kohl.vercel.app
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+**Backend:**  
+https://cadastro-clientes-api-06j8.onrender.com
 
-## Code scaffolding
+## 📋 Funcionalidades
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Cadastro de clientes
+- Edição de clientes
+- Exclusão de clientes
+- Listagem de clientes cadastrados
+- Validação de campos obrigatórios
+- Validação de e-mail
+- Máscara para CPF
+- Máscara para telefone
+- Máscara para CEP
+- Consulta de endereço através do CEP
+- Preenchimento automático de:
+  - Logradouro
+  - Bairro
+  - Cidade
+  - UF
+- Mensagens de validação e erro
+- Interface responsiva para dispositivos móveis
 
-```bash
-ng generate component component-name
-```
+## 🛠️ Tecnologias utilizadas
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Frontend
 
-```bash
-ng generate --help
-```
+- Angular 21
+- TypeScript
+- Angular Material
+- Reactive Forms
+- RxJS
+- HTML5
+- CSS3
 
-## Building
+### Backend
 
-To build the project run:
+- C#
+- ASP.NET Core
+- .NET 10
+- REST API
+- HttpClient
+- Docker
 
-```bash
-ng build
-```
+### Integrações e infraestrutura
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- ViaCEP
+- Git
+- GitHub
+- Vercel
+- Render
 
-## Running unit tests
+## 🏗️ Arquitetura
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+A aplicação é dividida em duas partes:
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```text
+┌──────────────────────────────┐
+│          Angular             │
+│                              │
+│  Componentes                 │
+│  Services                    │
+│  Reactive Forms              │
+│  Angular Material             │
+└──────────────┬───────────────┘
+               │
+               │ HTTP
+               ▼
+┌──────────────────────────────┐
+│      ASP.NET Core API        │
+│                              │
+│  Controllers                 │
+│  Services                    │
+│  Models                      │
+└──────────────┬───────────────┘
+               │
+               │ HTTP
+               ▼
+┌──────────────────────────────┐
+│            ViaCEP             │
+│                              │
+│  Consulta de endereço        │
+│  através do CEP              │
+└──────────────────────────────┘
